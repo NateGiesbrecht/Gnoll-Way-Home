@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bafaf9dc9800a40bf394c9c3da7ce0, type: 3}
+  m_Name: Red Skin 1
+  m_EditorClassIdentifier: 
+  title: Red
+  description: 'A fancy Red Skin '
+  baseCost: 10
+  sprite: {fileID: 771332916, guid: 96b0e157a9f3fc44b8f89535fdd92152, type: 3}

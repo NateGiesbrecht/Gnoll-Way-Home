@@ -5,6 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     
+    //Skin selector 
+    public SpriteRenderer spriteRenderer; 
+    public Sprite[] skins; 
+    public AnimatorOverrideController redAnimController;
+    public AnimatorOverrideController blueAnimController;
+    public AnimatorOverrideController purpleAnimController;
+    public Material flash;
+    public Material normal; 
+
 
     public Camera sceneCamera; 
     public Weapon weapon; 
@@ -38,6 +47,8 @@ public class PlayerController : MonoBehaviour
     //Physics 
     public float knockBackForce;
     private bool beingKnockedBack; 
+
+     
      
     
 
@@ -48,10 +59,36 @@ public class PlayerController : MonoBehaviour
         health = 4; 
         maxHealth = 4;
         //timeBetweenShots = startTimeBetweenShots;
+        string skin = PlayerPrefs.GetString("EquipedSkin", "Default");
+        
+        //Set skin during countdown 
+        
+        switch(skin)
+        {
+            case "Default":
+                spriteRenderer.sprite = skins[0];
+                break;
+            case "Red":
+                spriteRenderer.sprite = skins[1];
+                RedSkin();
+                break;
+            case "Blue": 
+                spriteRenderer.sprite = skins[2];
+                BlueSkin();
+                break;
+            case "Purple":
+                spriteRenderer.sprite = skins[3];
+                PurpleSkin();
+                break;
+        }
+ 
+        //setSkinAnimator();
+
     }
 
     void Update()
     {
+        //RedSkin();
         if(isDead)
         {
             Destroy(gameObject);
@@ -189,4 +226,18 @@ public class PlayerController : MonoBehaviour
             beingKnockedBack = false;
              
     }
+
+    public void RedSkin()
+    {
+        animator.runtimeAnimatorController = redAnimController;
+    }
+    public void PurpleSkin()
+    {
+        animator.runtimeAnimatorController = purpleAnimController;
+    }
+    public void BlueSkin()
+    {
+        animator.runtimeAnimatorController = blueAnimController;
+    }
+
 }
