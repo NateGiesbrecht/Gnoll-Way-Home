@@ -65,6 +65,7 @@ MonoBehaviour:
   FloatingText: {fileID: 7146549268592044485, guid: 8bff886a5f3c88f4e94d36e1bd8929d9, type: 3}
   pickupEffect: {fileID: 2517720082798051691, guid: 6e165f1d5834c0c47a306d4d31c24d39, type: 3}
   healthIncrease: 1
+  pickupSound: {fileID: 8300000, guid: 68a372de49e88284291d9f841284fdf1, type: 3}
 --- !u!1 &3726765884896100101
 GameObject:
   m_ObjectHideFlags: 0

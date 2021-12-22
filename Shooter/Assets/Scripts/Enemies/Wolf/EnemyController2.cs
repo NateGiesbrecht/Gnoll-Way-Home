@@ -10,6 +10,7 @@ public class EnemyController2 : MonoBehaviour
     public WolfGFX wolfgfx; 
     public PlayerController player;
     public CoinScript coin; 
+    public AudioClip enemyDeadSound; 
 
     
 
@@ -34,6 +35,7 @@ public class EnemyController2 : MonoBehaviour
 
         if(this.health <= 0)
         {
+            AudioSource.PlayClipAtPoint(enemyDeadSound, transform.position);
             Instantiate(coin, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

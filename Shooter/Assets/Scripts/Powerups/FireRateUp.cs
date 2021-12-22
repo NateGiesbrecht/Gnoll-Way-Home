@@ -6,7 +6,8 @@ public class FireRateUp : MonoBehaviour
 {
     [SerializeField] private GameObject FloatingText;
     public GameObject pickupEffect;
-    public float fireRateIncrease = 0.03f;  
+    public float fireRateIncrease = 0.03f; 
+    public AudioClip pickupSound;  
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -24,7 +25,8 @@ public class FireRateUp : MonoBehaviour
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
         player.increaseFireRate(fireRateIncrease);
         //apply effect 
-
+        //sound 
+        AudioSource.PlayClipAtPoint(pickupSound, transform.position);
         ShowFloatingText("Fire Rate Increased");
         //remove powerup 
        Destroy(gameObject);

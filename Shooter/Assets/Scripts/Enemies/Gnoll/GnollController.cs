@@ -10,6 +10,7 @@ public class GnollController : MonoBehaviour
     public float knockBackDuration;
     public float knockBackForce; 
     public CoinScript coin; 
+    public AudioClip enemyDeadSound; 
 
     
 
@@ -34,6 +35,7 @@ public class GnollController : MonoBehaviour
 
         if(this.health <= 0)
         {
+            AudioSource.PlayClipAtPoint(enemyDeadSound, transform.position);
             Instantiate(coin, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

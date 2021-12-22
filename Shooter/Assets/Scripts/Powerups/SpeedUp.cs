@@ -8,6 +8,7 @@ public class SpeedUp : MonoBehaviour
     [SerializeField] private GameObject FloatingText; 
     public GameObject pickupEffect;
     public float speedIncrease = 0.5f; 
+    public AudioClip pickupSound; 
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,6 +27,7 @@ public class SpeedUp : MonoBehaviour
         player.increaseSpeed(speedIncrease);
         //apply effect 
 
+        AudioSource.PlayClipAtPoint(pickupSound, transform.position);
         //Show Text
         ShowFloatingText("Speed Increased");
         //remove powerup 

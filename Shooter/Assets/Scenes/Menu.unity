@@ -1138,6 +1138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1787899809}
   objectMusic: {fileID: 0}
+  slider: {fileID: 1060614545}
 --- !u!114 &1060614545
 MonoBehaviour:
   m_ObjectHideFlags: 0

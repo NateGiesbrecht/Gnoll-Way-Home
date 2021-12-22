@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     
@@ -32,6 +33,12 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
     private bool canTakeDamage;
 
+    //Items 
+    public int speedUpItems = 0;
+    public int fireRateItems = 0 ; 
+    
+
+
     //Coins
     private int coins; 
 
@@ -47,6 +54,11 @@ public class PlayerController : MonoBehaviour
     //Physics 
     public float knockBackForce;
     private bool beingKnockedBack; 
+
+    //Sound
+    public AudioClip hurtSound; 
+    public AudioClip step; 
+    public AudioClip step2; 
 
      
      
@@ -178,12 +190,14 @@ public class PlayerController : MonoBehaviour
         if(canTakeDamage){
             this.health -= dmg; 
             flashEffect.Flash();
+            AudioSource.PlayClipAtPoint(hurtSound, transform.position);
         }
     }
 
     public void increaseSpeed(float increase)
     {
         this.speed += increase; 
+        speedUpItems++;
     }
 
     public void restoreHealth(int increase)
@@ -194,6 +208,7 @@ public class PlayerController : MonoBehaviour
     public void increaseFireRate(float increase)
     {
         this.fireRate -= increase;
+        fireRateItems++;
     }
 
     public void increaseCoins(int increase)
@@ -238,6 +253,17 @@ public class PlayerController : MonoBehaviour
     public void BlueSkin()
     {
         animator.runtimeAnimatorController = blueAnimController;
+    }
+
+    private void Footstep()
+    {
+        AudioSource.PlayClipAtPoint(step, transform.position, 0.4f);
+    }
+
+    private void Footstep2()
+    {
+        //step.volume(0.1f);
+        AudioSource.PlayClipAtPoint(step2, transform.position, 0.4f);
     }
 
 }

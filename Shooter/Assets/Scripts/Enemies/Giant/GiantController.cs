@@ -8,6 +8,7 @@ public class GiantController : MonoBehaviour
     public GiantGFX giantgfx; 
     public PlayerController player;
     public CoinScript coin;
+    public AudioClip enemyDeadSound; 
 
 
     //bool left = true;
@@ -30,6 +31,7 @@ public class GiantController : MonoBehaviour
     {
         if(this.health <= 0)
         {
+            AudioSource.PlayClipAtPoint(enemyDeadSound, transform.position);
             Instantiate(coin, transform.position, Quaternion.identity);
             Destroy(gameObject);
             

@@ -214,10 +214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63cb8328742d21147ba88f5ad9f819ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 4
   wolfgfx: {fileID: 6027317300309809133}
   player: {fileID: 0}
   coin: {fileID: 6040716353902202202, guid: 890da1c24d656744996eca5a3faefd80, type: 3}
+  enemyDeadSound: {fileID: 8300000, guid: 12173045eef697e46ae15680a860a717, type: 3}
 --- !u!50 &5659975807030752126
 Rigidbody2D:
   serializedVersion: 4

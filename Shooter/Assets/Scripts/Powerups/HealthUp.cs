@@ -7,6 +7,7 @@ public class HealthUp : MonoBehaviour
     [SerializeField] private GameObject FloatingText;
     public GameObject pickupEffect;
     public int healthIncrease = 1;  
+    public AudioClip pickupSound; 
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -30,6 +31,7 @@ public class HealthUp : MonoBehaviour
         player.restoreHealth(healthIncrease);
         //apply effect 
 
+        AudioSource.PlayClipAtPoint(pickupSound, transform.position);
         ShowFloatingText("Health Restored");
         //remove powerup 
         Destroy(gameObject);

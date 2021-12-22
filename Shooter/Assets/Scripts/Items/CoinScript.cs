@@ -8,6 +8,7 @@ public class CoinScript : MonoBehaviour
     //public GameObject pickupEffect;
     //public float speedIncrease = 0.5f; 
     private int coinIncrease = 1;
+    public AudioClip pickupSound; 
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -25,7 +26,7 @@ public class CoinScript : MonoBehaviour
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
         player.increaseCoins(coinIncrease);
         //apply effect 
-
+        AudioSource.PlayClipAtPoint(pickupSound, transform.position);
         //Show Text
             //ShowFloatingText("Speed Increased");
         //remove powerup 

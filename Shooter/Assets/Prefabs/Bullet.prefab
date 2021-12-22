@@ -102,7 +102,7 @@ MonoBehaviour:
   rb: {fileID: 48010165135508079}
   impactEffectWall: {fileID: 6295234679970547779, guid: a7d5b23b9710b6445b44b8127047ebc1, type: 3}
   impactEffectBlood: {fileID: 5674469114856257154, guid: 456ac2cba2ee469479240e1975c2c757, type: 3}
-  enemyHitSound: {fileID: 8300000, guid: ba88a79350d37a34a86a2e05140b1e57, type: 3}
+  enemyHitSound: {fileID: 8300000, guid: c544429f4ae9aa741a895b64474f03a4, type: 3}
 --- !u!50 &48010165135508079
 Rigidbody2D:
   serializedVersion: 4

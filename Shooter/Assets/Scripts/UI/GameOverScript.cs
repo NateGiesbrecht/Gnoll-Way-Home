@@ -38,7 +38,7 @@ public class GameOverScript : MonoBehaviour
             NewHighScore.gameObject.SetActive(true);
         }
 
-        highscore.text = PlayerPrefs.GetString("Highscore", "00:00");
+        //highscore.text = PlayerPrefs.GetString("Highscore", "00:00");
     }
 
     public void Quit()
