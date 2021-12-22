@@ -11,6 +11,7 @@ public class GameOverScript : MonoBehaviour
     TMP_Text highscore; 
     public TMP_Text NewHighScore;
     public Timer timer;
+    public GameController gameController;
     
     
     public void Start()
@@ -20,12 +21,13 @@ public class GameOverScript : MonoBehaviour
 
     public void Setup(int inputScore)
     {
+        gameController.setNotRunning();
         gameObject.SetActive(true);
         //score = GameObject.Find("Score").GetComponent<TMP_Text>();
         //highscore = GameObject.Find("Highscore").GetComponent<TMP_Text>();
         //NewHighScore = GameObject.Find("NewHighScore").GetComponent<TMP_Text>();
         //NewHighScore.gameObject.SetActive(false); //Default to not showing 
-        Debug.Log(timer.timerText.text);
+        
         score.text = "You survived for " + timer.timerText.text; 
 
         //Check for new highScore 

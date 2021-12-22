@@ -10,6 +10,7 @@ TagManager:
   - GameMusic
   - EnemyGnoll
   - EnemyGiant
+  - ScreenShake
   layers:
   - Default
   - TransparentFX

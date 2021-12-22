@@ -60,6 +60,12 @@ public class PlayerController : MonoBehaviour
     public AudioClip step; 
     public AudioClip step2; 
 
+    //Effects
+    public ParticleSystem dust; 
+
+    //Time 
+    public TimeController timeController; 
+
      
      
     
@@ -123,8 +129,11 @@ public class PlayerController : MonoBehaviour
         if(moveVelocity.x == 0&& moveVelocity.y == 0)
         {   
             animator.SetBool("moving", false);
+            
         }else{
             animator.SetBool("moving", true);
+            CreateDust();
+            
         }
     }
 
@@ -145,6 +154,7 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        
 
         //Rotate player to follow mouse
         Vector2 aimDirection = mousePosition - rb.position;
@@ -191,6 +201,9 @@ public class PlayerController : MonoBehaviour
             this.health -= dmg; 
             flashEffect.Flash();
             AudioSource.PlayClipAtPoint(hurtSound, transform.position);
+
+            timeController.DoSlowMotion();
+
         }
     }
 
@@ -264,6 +277,11 @@ public class PlayerController : MonoBehaviour
     {
         //step.volume(0.1f);
         AudioSource.PlayClipAtPoint(step2, transform.position, 0.4f);
+    }
+
+    private void CreateDust()
+    {
+        dust.Play();
     }
 
 }

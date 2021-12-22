@@ -25,9 +25,9 @@ public class countDownController : MonoBehaviour
         string skin = PlayerPrefs.GetString("EquipedSkin", "Default");
         Debug.Log(skin);
 
-        //pause world 
-        Time.timeScale = 0; 
+
         StartCoroutine(CountDownToStart());
+        
         
         
     }
@@ -50,7 +50,7 @@ public class countDownController : MonoBehaviour
         
         countDownDisplay.gameObject.SetActive(false); 
         //unpause world 
-        Time.timeScale = 1; 
+        //Time.timeScale = 1; 
 
         gameController.setRunning();
         //player.setSkinAnimator();

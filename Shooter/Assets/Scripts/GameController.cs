@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
     public GameOverScript gameOverScript; 
     public PlayerController player; 
-    private bool paused = false;
+    public bool paused = false;
     private bool running = false; 
     public TMP_Text pause;
     private bool coinsUpdated = false; 
@@ -20,15 +20,14 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(paused)
-        {
-            Time.timeScale = 0;
-        }else if (running){
-            Time.timeScale = 1;
-        }
+        // if(paused)
+        // {
+        //     Time.timeScale = 0;
+        // }else if (running){
+        //     Time.timeScale = 1;
+        // }
         if(Input.GetKeyDown(KeyCode.Escape) && running)
         {
-            
            //TMP_Text pause = GameObject.Find("Pause").GetComponent<TMP_Text>();
            paused = !paused; 
            switch(paused){
@@ -37,6 +36,7 @@ public class GameController : MonoBehaviour
                 break;
                case false:
                 pause.gameObject.SetActive(false);
+                Time.timeScale = 1;
                 break;
            } 
            
@@ -66,5 +66,10 @@ public class GameController : MonoBehaviour
     public void setRunning()
     {
         running = true; 
+    }
+
+    public void setNotRunning()
+    {
+        running = false; 
     }
 }

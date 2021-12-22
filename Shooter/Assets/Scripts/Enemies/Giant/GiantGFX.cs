@@ -9,6 +9,9 @@ public class GiantGFX : MonoBehaviour
     public Animator animator; 
     [SerializeField] public FlashScript flashEffect;
 
+    public AudioClip[] steps;
+    public int stepCounter = 0; 
+
     // Update is called once per frame
     void Update()
     {
@@ -26,5 +29,13 @@ public class GiantGFX : MonoBehaviour
     public void flash()
     {
         flashEffect.Flash();
+    }
+
+    public void PlayStep()
+    {
+        int clipToPlay = stepCounter % 3;
+         
+        AudioSource.PlayClipAtPoint(steps[clipToPlay], transform.position);
+        stepCounter++;
     }
 }

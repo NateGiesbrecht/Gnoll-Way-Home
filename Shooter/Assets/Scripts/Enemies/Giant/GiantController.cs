@@ -10,6 +10,8 @@ public class GiantController : MonoBehaviour
     public CoinScript coin;
     public AudioClip enemyDeadSound; 
 
+    
+
 
     //bool left = true;
     //bool right = false; 
@@ -44,4 +46,6 @@ public class GiantController : MonoBehaviour
         this.health--; 
         giantgfx.flash();
     }
+
+    
 }

@@ -498,7 +498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyBullet: {fileID: 7128277229124706431, guid: 06373fcf609f9154d9673093b2b6c441, type: 3}
   firePoint: {fileID: 6027317301653271374}
-  fireForce: 15
+  fireForce: 10
   rb: {fileID: 6027317300479887263}
   startTimeBetweenShots: 2
   player: {fileID: 0}

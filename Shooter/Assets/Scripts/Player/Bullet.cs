@@ -12,7 +12,13 @@ public class Bullet : MonoBehaviour
     public ParticleSystem impactEffectBlood;
     public AudioClip enemyHitSound; 
 
+    private Shake shake;
     
+
+    public void Start()
+    {
+        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
+    }
     public void Impact()
     {
         Instantiate(impactEffectWall, transform.position, Quaternion.identity);
@@ -41,16 +47,19 @@ public class Bullet : MonoBehaviour
                 //Take Damage 
                 EnemyController2 health = other.gameObject.GetComponent<EnemyController2>();
                 health.reduceHealth(1); 
+                shake.CamShake();
                 ImpactBlood();
                 break;
             case "EnemyGnoll":
                 GnollController GnollHealth = other.gameObject.GetComponent<GnollController>();
                 GnollHealth.reduceHealth(1); 
+                shake.CamShake();
                 ImpactBlood();
                 break;
             case "EnemyGiant":
                 GiantController GiantHealth = other.gameObject.GetComponent<GiantController>();
                 GiantHealth.reduceHealth(1);
+                shake.CamShake();
                 ImpactBlood();
 
                 break;
