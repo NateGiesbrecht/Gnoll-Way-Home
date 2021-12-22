@@ -7,8 +7,10 @@ public class GiantController : MonoBehaviour
     public int health = 10;
     public GiantGFX giantgfx; 
     public PlayerController player;
-    public CoinScript coin;
+    public AttractorScript coin;
     public AudioClip enemyDeadSound; 
+
+    public TimeController timeController; 
 
     
 
@@ -20,7 +22,7 @@ public class GiantController : MonoBehaviour
     void Start()
     {
 
-
+        timeController = GameObject.Find("TimeController").GetComponent<TimeController>(); 
     
     }
 
@@ -34,7 +36,13 @@ public class GiantController : MonoBehaviour
         if(this.health <= 0)
         {
             AudioSource.PlayClipAtPoint(enemyDeadSound, transform.position);
-            Instantiate(coin, transform.position, Quaternion.identity);
+
+            for(int i = 0; i < 5; i++){
+                Vector2 dropPos = new Vector2(transform.position.x + Random.Range(-1f, 1f) , transform.position.y + Random.Range(-1f, 1f));
+                Instantiate(coin, dropPos, Quaternion.identity);
+            }
+            
+            timeController.DoSlowMotion2();
             Destroy(gameObject);
             
         }

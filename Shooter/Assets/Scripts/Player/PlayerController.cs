@@ -66,6 +66,15 @@ public class PlayerController : MonoBehaviour
     //Time 
     public TimeController timeController; 
 
+    //Dash
+    public float startDashTime;
+    private float dashTime; 
+    public float dashSpeed; 
+    private int direction; 
+    private bool dashing = false;
+    private float nextDashTime =0f; 
+    private float dashRate = 1f; 
+
      
      
     
@@ -78,6 +87,7 @@ public class PlayerController : MonoBehaviour
         maxHealth = 4;
         //timeBetweenShots = startTimeBetweenShots;
         string skin = PlayerPrefs.GetString("EquipedSkin", "Default");
+        dashTime = startDashTime;
         
         //Set skin during countdown 
         
@@ -135,6 +145,8 @@ public class PlayerController : MonoBehaviour
             CreateDust();
             
         }
+
+        
     }
 
     
@@ -143,11 +155,18 @@ public class PlayerController : MonoBehaviour
     {
         //Move(); 
         if(!beingKnockedBack){
-            canTakeDamage = true; 
-            Move(); 
+            
+            if(!dashing)
+            {
+                canTakeDamage = true; 
+                Move(); 
+            }
         }else{
             canTakeDamage = false; 
         }
+
+        Debug.Log("DashTime" + dashTime + "Start: " + startDashTime + " Speed:" + dashSpeed);
+        
         
     }
 
@@ -162,30 +181,54 @@ public class PlayerController : MonoBehaviour
         //rb.rotation = aimAngle;
     }
 
+    void Dash(Vector2 pos)
+    {
+        dashing = true;
+        if(direction == 0)
+        {
+            if(pos != Vector2.zero )
+                direction = 1;
+        }
+        else
+        {
+            if (dashTime <= 0){
+                direction = 0;
+                dashTime = startDashTime;
+                rb.velocity = Vector2.zero; 
+                dashing = false;
+                canTakeDamage = true;
+            }
+            else
+                dashTime -= Time.deltaTime;
+                rb.velocity = pos * dashSpeed;    
+        } 
+    }
+
     void ProcessInput()
     {
-        //Knockback test 
-        // if (Input.GetKeyDown(KeyCode.Space)){
-        //     knockBack();
-        //     Debug.Log("space");
-            
-        //     Vector2 direction = (enemy.transform.position - this.transform.position).normalized;
-        //     rb.AddForce(-direction * 10f);
-        // }
-
-
+        
+        
 
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput.normalized * speed; 
 
-        // while(Input.GetMouseButton(0))
-        // {
+        //If we started a dash, keep calling till we're done 
+        if(dashing){
+            Dash(moveInput);
+        }
+        
             if(Input.GetMouseButton(0) && Time.time > nextFire)
             {
                 nextFire = Time.time + fireRate;
                 weapon.fire(); 
             }
-        //}
+   
+            if(Input.GetKeyDown(KeyCode.Space) && Time.time > nextDashTime)
+            {
+                nextDashTime  = Time.time + dashRate;
+                canTakeDamage = false;
+                Dash(moveInput);
+            }
 
         mousePosition = sceneCamera.ScreenToWorldPoint(Input.mousePosition); 
     }
@@ -220,7 +263,9 @@ public class PlayerController : MonoBehaviour
 
     public void increaseFireRate(float increase)
     {
-        this.fireRate -= increase;
+        if(fireRate > 0.08){
+            fireRate -= increase;
+        }
         fireRateItems++;
     }
 

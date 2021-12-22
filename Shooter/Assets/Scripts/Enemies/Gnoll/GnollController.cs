@@ -9,9 +9,10 @@ public class GnollController : MonoBehaviour
     public PlayerController player;
     public float knockBackDuration;
     public float knockBackForce; 
-    public CoinScript coin; 
+    public AttractorScript coin; 
     public AudioClip enemyDeadSound; 
-
+    
+    public TimeController timeController; 
     
 
     //bool left = true;
@@ -22,6 +23,8 @@ public class GnollController : MonoBehaviour
     {
         // knockBackDuration = 0.2f;
         // knockBackForce = 15f;
+
+        timeController = GameObject.Find("TimeController").GetComponent<TimeController>(); 
     
     }
 
@@ -37,6 +40,8 @@ public class GnollController : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(enemyDeadSound, transform.position);
             Instantiate(coin, transform.position, Quaternion.identity);
+            timeController.DoSlowMotion2();
+            
             Destroy(gameObject);
         }
     }

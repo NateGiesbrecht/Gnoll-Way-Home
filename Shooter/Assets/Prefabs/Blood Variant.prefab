@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6295234679970547804, guid: a7d5b23b9710b6445b44b8127047ebc1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6295234679970547805, guid: a7d5b23b9710b6445b44b8127047ebc1, type: 3}
       propertyPath: m_Name
       value: Blood Variant

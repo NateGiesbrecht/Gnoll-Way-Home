@@ -9,8 +9,12 @@ public class EnemyController2 : MonoBehaviour
     public int health = 3;
     public WolfGFX wolfgfx; 
     public PlayerController player;
-    public CoinScript coin; 
+    public AttractorScript coin; 
     public AudioClip enemyDeadSound; 
+
+    public TimeController timeController; 
+
+    
 
     
 
@@ -20,8 +24,8 @@ public class EnemyController2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
+         timeController = GameObject.Find("TimeController").GetComponent<TimeController>(); 
+        
     
     }
 
@@ -36,7 +40,11 @@ public class EnemyController2 : MonoBehaviour
         if(this.health <= 0)
         {
             AudioSource.PlayClipAtPoint(enemyDeadSound, transform.position);
-            Instantiate(coin, transform.position, Quaternion.identity);
+            for(int i = 0; i < 2; i++){
+                Vector2 dropPos = new Vector2(transform.position.x + Random.Range(-1f, 1f) , transform.position.y + Random.Range(-1f, 1f));
+                Instantiate(coin, dropPos, Quaternion.identity);
+            }
+            timeController.DoSlowMotion2();
             Destroy(gameObject);
         }
     }

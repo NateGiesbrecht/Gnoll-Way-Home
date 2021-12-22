@@ -217,8 +217,9 @@ MonoBehaviour:
   health: 4
   wolfgfx: {fileID: 6027317300309809133}
   player: {fileID: 0}
-  coin: {fileID: 6040716353902202202, guid: 890da1c24d656744996eca5a3faefd80, type: 3}
+  coin: {fileID: 4777623384658151959, guid: 6f12879d44b4ea640965e745ccc4964c, type: 3}
   enemyDeadSound: {fileID: 8300000, guid: 12173045eef697e46ae15680a860a717, type: 3}
+  timeController: {fileID: 0}
 --- !u!50 &5659975807030752126
 Rigidbody2D:
   serializedVersion: 4

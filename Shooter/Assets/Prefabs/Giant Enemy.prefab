@@ -890,8 +890,9 @@ MonoBehaviour:
   health: 10
   giantgfx: {fileID: 4444526049049999669}
   player: {fileID: 0}
-  coin: {fileID: 6040716353902202202, guid: 890da1c24d656744996eca5a3faefd80, type: 3}
+  coin: {fileID: 4777623384658151959, guid: 6f12879d44b4ea640965e745ccc4964c, type: 3}
   enemyDeadSound: {fileID: 8300000, guid: 72d9098d1d2e18c428f2145cb67f2f42, type: 3}
+  timeController: {fileID: 0}
 --- !u!50 &8731009661868450159
 Rigidbody2D:
   serializedVersion: 4
