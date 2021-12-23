@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
     public GameObject HealthUp;
     public GameObject SpeedUp;
     public GameObject FireRateUp;
+    public GameObject grenadePickup;
+
     public float secondsBetweenSpawn;
      public float elapsedTime = 0.0f;
      public float radius = 1;
@@ -19,7 +21,13 @@ public class Spawner : MonoBehaviour
     public int minTime = 1;
 
     public Transform[] spawnPoints; 
+    public Transform[] spawnPointsMap1; 
+    public Transform[] spawnPointsMap2; 
+    public Transform[] spawnPointsMap3; 
     public PlayerController player; 
+    public GameController gameController; 
+
+    private int mapToSpawn; 
 
     //current time
      private float time;
@@ -32,6 +40,20 @@ public class Spawner : MonoBehaviour
     {
        SetRandomTime();
        time = 0; 
+
+       mapToSpawn = gameController.mapToSpawn; 
+       switch(mapToSpawn)
+       {
+           case 0:
+            spawnPoints = spawnPointsMap1;
+            break;
+           case 1:
+            spawnPoints = spawnPointsMap2;
+            break;
+           case 2: 
+            spawnPoints = spawnPointsMap3;
+            break;
+       }
     }
      void Update()
      {
@@ -85,7 +107,8 @@ public class Spawner : MonoBehaviour
 
      //Spawns the object and resets the time
      void SpawnObject(){
-         int itemToSpawn = (int)Random.Range(0,3);
+         int itemToSpawn = (int)Random.Range(0,4);
+         Debug.Log("spawning Item");
          Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
          switch(itemToSpawn){
              case 0:
@@ -96,6 +119,9 @@ public class Spawner : MonoBehaviour
                 break;
              case 2:
                 GameObject newRateUp = (GameObject)Instantiate(FireRateUp, randomPoint.position, Quaternion.Euler (0, 0, 0));
+                break;
+            case 3:
+                GameObject newGrenadePickup = (GameObject)Instantiate(grenadePickup, randomPoint.position, Quaternion.Euler (0, 0, 0));
                 break;
          }
          

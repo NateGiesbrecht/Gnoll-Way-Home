@@ -14,6 +14,8 @@ public class EnemyController2 : MonoBehaviour
 
     public TimeController timeController; 
 
+    private bool explosion = false;
+
     
 
     
@@ -52,9 +54,26 @@ public class EnemyController2 : MonoBehaviour
 
     public void reduceHealth(int damage)
     {
-        this.health--; 
+        this.health -= damage; 
         //Debug.Log("here");
         wolfgfx.flash();
+    }
+
+    public void reduceHealthGrenade(int damage)
+    {
+        if(!explosion)
+        {
+            this.health -= damage; 
+            wolfgfx.flash();
+            explosion = true;
+            StartCoroutine(explosionCooldown());
+        }
+    }
+
+    IEnumerator explosionCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        explosion = false;
     }
 
 }

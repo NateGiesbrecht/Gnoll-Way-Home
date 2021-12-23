@@ -13,6 +13,8 @@ public class GnollController : MonoBehaviour
     public AudioClip enemyDeadSound; 
     
     public TimeController timeController; 
+
+    private bool explosion = false; 
     
 
     //bool left = true;
@@ -49,12 +51,30 @@ public class GnollController : MonoBehaviour
 
     public void reduceHealth(int damage)
     {
-        this.health--; 
+        this.health-= damage; 
         //Debug.Log("here");
         gnollGFX.flash();
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    public void reduceHealthGrenade(int damage)
+    {
+        if(!explosion)
+        {
+            this.health -= damage; 
+            gnollGFX.flash();
+            explosion = true;
+            StartCoroutine(explosionCooldown());
+        }
+    }
+
+    IEnumerator explosionCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        explosion = false;
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
     {
         
         switch(other.gameObject.tag)

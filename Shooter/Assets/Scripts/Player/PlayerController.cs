@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     //Items 
     public int speedUpItems = 0;
     public int fireRateItems = 0 ; 
+    public int grenades = 3; 
     
 
 
@@ -165,7 +166,7 @@ public class PlayerController : MonoBehaviour
             canTakeDamage = false; 
         }
 
-        Debug.Log("DashTime" + dashTime + "Start: " + startDashTime + " Speed:" + dashSpeed);
+        //Debug.Log("DashTime" + dashTime + "Start: " + startDashTime + " Speed:" + dashSpeed);
         
         
     }
@@ -222,6 +223,13 @@ public class PlayerController : MonoBehaviour
                 nextFire = Time.time + fireRate;
                 weapon.fire(); 
             }
+
+            if(Input.GetMouseButtonDown(1) && this.grenades > 0)
+            {
+                //throw grenade 
+                weapon.ThrowGrenade(); 
+                this.grenades--; 
+            }
    
             if(Input.GetKeyDown(KeyCode.Space) && Time.time > nextDashTime)
             {
@@ -269,6 +277,11 @@ public class PlayerController : MonoBehaviour
         fireRateItems++;
     }
 
+    public void increaseGrenades(int increase)
+    {
+        this.grenades++;
+    }
+
     public void increaseCoins(int increase)
     {
         this.coins += increase;
@@ -279,6 +292,11 @@ public class PlayerController : MonoBehaviour
     public int getCoins()
     {
         return this.coins;
+    }
+
+    public int getGrenades()
+    {
+        return this.grenades;
     }
 
     public IEnumerator knockBack(float knockBackDuration, float knockBackPower, Transform obj)

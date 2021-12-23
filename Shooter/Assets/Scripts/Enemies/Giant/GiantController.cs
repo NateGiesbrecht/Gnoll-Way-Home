@@ -12,6 +12,8 @@ public class GiantController : MonoBehaviour
 
     public TimeController timeController; 
 
+    private bool explosion = false;
+
     
 
 
@@ -51,8 +53,26 @@ public class GiantController : MonoBehaviour
 
     public void reduceHealth(int damage)
     {
-        this.health--; 
+        this.health-=damage; 
         giantgfx.flash();
+    }
+
+    public void reduceHealthGrenade(int damage)
+    {
+        if(!explosion)
+        {
+            this.health -= damage; 
+            giantgfx.flash();
+            explosion = true;
+            StartCoroutine(explosionCooldown());
+        }
+    }
+
+    IEnumerator explosionCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        explosion = false;
+        
     }
 
     

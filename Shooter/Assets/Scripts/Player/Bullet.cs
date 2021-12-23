@@ -23,8 +23,6 @@ public class Bullet : MonoBehaviour
     {
         Instantiate(impactEffectWall, transform.position, Quaternion.identity);
         Destroy(gameObject);
-
-
     }
 
     public void ImpactBlood()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameController : MonoBehaviour
@@ -9,17 +10,43 @@ public class GameController : MonoBehaviour
     public PlayerController player; 
     public bool paused = false;
     private bool running = false; 
-    public TMP_Text pause;
+    public GameObject pause;
     private bool coinsUpdated = false; 
+    private bool playerSet = false;
+    public int mapToSpawn;
+    
     // Start is called before the first frame update
     void Start()
     {
         running = false;
+        mapToSpawn = (int)Random.Range(0,3);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!playerSet)
+        {
+            Vector2 temp;
+            switch(mapToSpawn){
+                
+                case 0:
+                    temp = new Vector2(384.2f, -29.4f); 
+                    player.transform.position = temp;
+                    playerSet = true;
+                    break;
+                case 1:
+                    temp = new Vector2(110.5f, -8.9f);
+                    player.transform.position = temp;
+                    playerSet = true;
+                    break;
+                case 2:
+                    temp = new Vector2(-2.6f, -4.3f);
+                    player.transform.position = temp;
+                    playerSet = true;
+                    break;
+            }
+        }
         // if(paused)
         // {
         //     Time.timeScale = 0;
