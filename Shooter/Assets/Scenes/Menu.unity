@@ -1137,6 +1137,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1787899809}
+  songs:
+  - {fileID: 8300000, guid: 20ba89495a478f2498f420df88c4c73e, type: 3}
+  - {fileID: 8300000, guid: 45bea3eefd3aa2b49825e5755967fbc5, type: 3}
+  - {fileID: 8300000, guid: 50954ef76b282d64fab71e0300800aca, type: 3}
+  - {fileID: 8300000, guid: fa49549779bdc8c46a0b18bc6ac9f0e5, type: 3}
+  - {fileID: 8300000, guid: 08d66a15eb18f2c4a92e6470fda6f3a8, type: 3}
+  - {fileID: 8300000, guid: 846bfaec906b20547a805974c7711f8e, type: 3}
+  - {fileID: 8300000, guid: c49365c5f895f01408ff4cae973c2614, type: 3}
+  - {fileID: 8300000, guid: 185d060dca94f3340ba1b9361164a47b, type: 3}
   objectMusic: {fileID: 0}
   slider: {fileID: 1060614545}
 --- !u!114 &1060614545
@@ -2449,11 +2458,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 185d060dca94f3340ba1b9361164a47b, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

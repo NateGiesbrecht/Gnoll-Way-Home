@@ -8,6 +8,8 @@ public class Spawner : MonoBehaviour
     public GameObject enemyObject;
     public GameObject enemyGnollObject;
     public GameObject enemyGiantObject;
+    public GameObject enemyMuddyObject;
+    public GameObject enemySkeletonObject;
     public GameObject HealthUp;
     public GameObject SpeedUp;
     public GameObject FireRateUp;
@@ -63,7 +65,7 @@ public class Spawner : MonoBehaviour
          }
         Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
          elapsedTime += Time.deltaTime;
-        int enemyToSpawn = (int)Random.Range(0,3);
+        int enemyToSpawn = (int)Random.Range(0,5);
          if (elapsedTime > secondsBetweenSpawn)
          {
              elapsedTime = 0;
@@ -80,6 +82,12 @@ public class Spawner : MonoBehaviour
                     break;
                 case 2:
                     newEnemy = (GameObject)Instantiate(enemyGiantObject, randomPoint.position, Quaternion.Euler (0, 0, 0));
+                    break;
+                case 3:
+                    newEnemy = (GameObject)Instantiate(enemyMuddyObject, randomPoint.position, Quaternion.Euler (0, 0, 0));
+                    break;
+                case 4:
+                    newEnemy = (GameObject)Instantiate(enemySkeletonObject, randomPoint.position, Quaternion.Euler (0, 0, 0));
                     break;
             }
               //Vector3 spawnPosition = Random.insideUnitCircle * radius;

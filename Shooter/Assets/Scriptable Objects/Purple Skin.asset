@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Purple
   description: 'A fancy Purple Skin '
-  baseCost: 100
+  baseCost: 500
   sprite: {fileID: -673906409, guid: ad249b90a79e52441818653ace8e69a3, type: 3}

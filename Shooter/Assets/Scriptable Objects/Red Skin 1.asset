@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Red
   description: 'A fancy Red Skin '
-  baseCost: 10
+  baseCost: 100
   sprite: {fileID: 771332916, guid: 96b0e157a9f3fc44b8f89535fdd92152, type: 3}

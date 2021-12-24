@@ -7,6 +7,7 @@ public class MusicPlay : MonoBehaviour
     public AudioSource audioSource; 
     public GameObject objectMusic; 
     public TimeController timeController;
+    public AudioClip[] songs; 
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,17 @@ public class MusicPlay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!audioSource.isPlaying)
+        {
+            audioSource.clip = GetRandomClip();
+            audioSource.Play();
+        }
+
         
+    }
+
+    private AudioClip GetRandomClip()
+    {
+        return songs[Random.Range(0,songs.Length)];
     }
 }

@@ -30,6 +30,8 @@ public class EnemyWeapon : MonoBehaviour
         if(timeBetweenShots <= 0)
         {
             //Instantiate(enemyBullet, transform.position, Quaternion.identity);
+
+            
             GameObject projectile = Instantiate(enemyBullet, firePoint.position, firePoint.rotation);
             projectile.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
             timeBetweenShots = startTimeBetweenShots; 
